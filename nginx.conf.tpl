@@ -29,8 +29,8 @@ http {
     }
 
   {{range services}}
-  location /{{.Name }} {
-      proxy_pass https://{{.Name }};
+  location /{{.Name }}/ {
+      proxy_pass https://{{.Name }}/;
       proxy_http_version 1.1;
       proxy_set_header Connection "";
   }
