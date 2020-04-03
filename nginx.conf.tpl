@@ -17,7 +17,7 @@ http {
 
   {{range services}}
   upstream {{.Name}}{{range service .Name}} {
-    {{.Address}}:{{.Port}}{{end}}
+    server {{.Address}}:{{.Port}}{{end}} max_fails=3 fail_timeout=10s;
   }
   {{end}}
 
