@@ -25,14 +25,20 @@ http {
     listen 80 default_server;
 
     location / {
-        if ($request_method !~ ^(GET|POST|HEAD|OPTIONS|PUT|DELETE)$) {
-            return 405;
-        }
-        proxy_pass $arg_url;
+        return 200;
     }
+
+  {{range services}}
+  location /{{.Name }} {
+      proxy_pass https://{{.Name }};
+      proxy_http_version 1.1;
+      proxy_set_header Connection "";
+  }
+  {{end}}
 
     location /status {
       return 200;
     }
+
   }
 }
