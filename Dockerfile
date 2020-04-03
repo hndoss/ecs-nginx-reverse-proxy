@@ -9,6 +9,6 @@ COPY nginx.conf.tpl /etc/nginx/nginx.conf.tpl
 
 COPY entrypoint.sh /bin/entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/bin/entrypoint.sh"]
 
 CMD ["-config=/etc/nginx/consul_template.hcl"]
