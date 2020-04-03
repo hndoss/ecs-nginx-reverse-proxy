@@ -30,5 +30,9 @@ http {
         }
         proxy_pass $arg_url;
     }
+
+    location /status {
+      return 200;
+    }
   }
 }
