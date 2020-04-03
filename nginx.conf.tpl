@@ -28,13 +28,13 @@ http {
         return 200;
     }
 
-  {{range services}}
-  location /{{.Name }}/ {
-      proxy_pass http://{{.Name }}/;
-      proxy_http_version 1.1;
-      proxy_set_header Connection "";
-  }
-  {{end}}
+    {{range services}}
+    location /{{.Name }}/ {
+        proxy_pass http://{{.Name }}/;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+    }
+    {{end}}
 
     location /status {
       return 200;
