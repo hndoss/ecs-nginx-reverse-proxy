@@ -33,11 +33,14 @@ http {
     }
 
     {{ range services }}
+        {{ $boxes := service .Name  }}
+          {{ if gt (len $boxes) 0 }}
     location /{{ .Name }}/ {
         proxy_pass http://{{.Name }}/;
         proxy_http_version 1.1;
         proxy_set_header Connection "";
     }
+         {{ end }}
     {{ end }}
 
     location /status {
