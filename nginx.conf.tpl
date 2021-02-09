@@ -14,6 +14,7 @@ http {
   sendfile     on;
   tcp_nopush   on;
   server_names_hash_bucket_size 128;
+  client_max_body_size 64M;
 
   {{ range services }}
     {{ $boxes := service .Name  }}
